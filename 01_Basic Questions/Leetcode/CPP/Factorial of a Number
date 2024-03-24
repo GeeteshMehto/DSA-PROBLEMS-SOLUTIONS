@@ -1,0 +1,22 @@
+/*
+Question Link :- https://www.codingninjas.com/studio/problems/factorial-of-a-number_1115779
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int ans = 1;
+    if (n >= 0) {
+        for (int i = 1; i <= n; i++) {
+            ans *= i;
+        }
+        cout << ans;
+    }
+    else {
+        cout << "Error";
+    }
+    return 0;
+}
