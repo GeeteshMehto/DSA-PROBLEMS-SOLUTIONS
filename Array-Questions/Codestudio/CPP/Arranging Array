@@ -1,0 +1,17 @@
+/*
+Question Link :- https://www.codingninjas.com/studio/problems/arranging-amplifiers_1171045
+*/
+
+#include <bits/stdc++.h> 
+
+vector<int> arrangeGame(vector<int>&arr) {
+	int n = arr.size();
+	sort(arr.begin(), arr.end());
+	int countOne = count(arr.begin(), arr.end(), 1);
+	
+	if (countOne + 2 == n && arr[n - 1] == 3 && arr[n - 2] == 2)
+		return arr;
+	
+	reverse(arr.begin() + countOne, arr.end());
+	return arr;
+}
