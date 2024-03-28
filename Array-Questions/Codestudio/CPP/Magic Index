@@ -1,0 +1,12 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/magic-index_1199229
+*/
+
+#include <bits/stdc++.h> 
+int magicIndex(vector<int> a, int n) {
+	for (int i = 0; i < n; i++) {
+		if (a[i] == i)
+			return i;
+	}
+	return -1;
+}
