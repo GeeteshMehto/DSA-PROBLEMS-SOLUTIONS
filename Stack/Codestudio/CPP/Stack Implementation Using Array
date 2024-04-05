@@ -1,0 +1,63 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/stack-implementation-using-array_3210209
+*/
+
+
+// Stack class.
+class Stack {
+    vector<int>arr;
+    int topindex;
+    int size;
+    
+public:
+    Stack(int capacity) {
+        this -> arr.resize(capacity);
+        this -> topindex = -1;
+        this -> size = capacity;
+    }
+
+    void push(int num) {
+        if (topindex != size-1) {
+            topindex++;
+            arr[topindex] = num;
+        }
+    }
+
+    int pop() {
+        if(topindex!=-1) {
+            topindex--;
+            return arr[topindex+1];
+        }
+        else {
+            return -1;
+        }
+    }
+    
+    int top() {
+        if(topindex!=-1) {
+            return arr[topindex];
+        }
+        else {
+            return -1;
+        }
+    }
+    
+    int isEmpty() {
+        if(topindex==-1) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    
+    int isFull() {
+        if(topindex==size-1) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    
+};
