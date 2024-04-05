@@ -1,0 +1,26 @@
+/*
+Question Link :- https://leetcode.com/problems/reshape-the-matrix/
+*/
+
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
+        int originalRows = mat.size();
+        int originalCols = mat[0].size();
+      
+        if (originalRows * originalCols != r * c) {
+            return mat;
+        }
+      
+        vector<vector<int>> reshapedMatrix(r, vector<int>(c));
+      
+        for (int i = 0; i < originalRows * originalCols; ++i) {
+            int newRow = i / c;
+            int newCol = i % c;
+            int originalRow = i / originalCols;
+            int originalCol = i % originalCols;
+            reshapedMatrix[newRow][newCol] = mat[originalRow][originalCol];
+        }
+        return reshapedMatrix;
+    }
+};
