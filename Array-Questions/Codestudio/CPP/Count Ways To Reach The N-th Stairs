@@ -1,0 +1,18 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/count-ways-to-reach-nth-stairs_798650
+*/
+
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def countDistinctWays(n: int) -> int:
+    MOD = 1e9+7
+    prev2 = 1
+    prev = 1
+    for i in range(2, n+1):
+        cur_i =int((prev2 + prev)%MOD)
+        prev2 = prev
+        prev = cur_i
+    return prev
