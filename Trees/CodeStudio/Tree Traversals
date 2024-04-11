@@ -1,0 +1,53 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/tree-traversal_981269
+*/
+
+
+
+/*
+    Following is Binary Tree Node structure:
+    class TreeNode
+    {
+    public:
+        int data;
+        TreeNode *left, *right;
+        TreeNode() : data(0), left(NULL), right(NULL) {}
+        TreeNode(int x) : data(x), left(NULL), right(NULL) {}
+        TreeNode(int x, TreeNode *left, TreeNode *right) : data(x), left(left), right(right) {}
+    };
+*/
+vector<vector<int>> getTreeTraversal(TreeNode *root){
+    stack<pair<TreeNode*,int>>s;
+    vector<int>pree;
+    vector<int>ine;
+    vector<int>poste;
+
+    vector<vector<int>>v;
+    
+    if(root== nullptr) 
+        return v;
+    s.push({root,1});
+
+    while(!s.empty()) {
+        if(s.top().second == 1) {
+            pree.push_back(s.top().first -> data);
+            s.top().second++;
+            if(s.top().first -> left != NULL)
+            s.push({s.top().first -> left, 1});
+        }
+        else if(s.top().second == 2) {
+            ine.push_back(s.top().first -> data);
+            s.top().second++;
+            if(s.top().first -> right != NULL)
+            s.push({s.top().first -> right, 1});
+        }
+        else if(s.top().second == 3) {
+            poste.push_back(s.top().first -> data);
+            s.pop();
+        }
+    }
+    v.push_back(ine);
+    v.push_back(pree);
+    v.push_back(poste);
+    return v;
+}
