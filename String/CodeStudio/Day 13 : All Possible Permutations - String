@@ -1,0 +1,27 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/print-permutations-string_758958
+*/
+
+#include <bits/stdc++.h> 
+
+void solve (int index, string s, vector<string>& ans) {
+    //base case
+    if (index >= s.size()) {
+        ans.push_back(s);
+        return ;
+    }
+    
+    string temp = s;
+
+    for (int i = index; i < s.size(); i++) {
+        swap(s[index], s[i]);
+        solve(index + 1, s, ans);
+        s = temp;
+    }
+    return ;
+}
+vector<string> findPermutations(string &s) {
+    vector<string>ans;
+    solve(0, s, ans);
+    return ans;
+}
