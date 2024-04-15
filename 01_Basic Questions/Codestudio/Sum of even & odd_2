@@ -1,0 +1,27 @@
+
+
+/*
+Question Link :- https://www.naukri.com/code360/problems/sum-of-even-odd_1115708
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    int Evensum = 0;
+    int Oddsum = 0;
+    cin >> n;
+    while(n > 0) {
+        int digit = n%10;
+        n /= 10;
+        if(digit%2 == 0) {
+            Evensum = Evensum + digit;
+        }
+        else {
+            Oddsum = Oddsum + digit;
+        }
+    }
+    cout << Evensum << " " << Oddsum << endl;
+    return 0;    
+}
