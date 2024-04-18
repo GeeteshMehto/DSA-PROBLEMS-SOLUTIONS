@@ -2,6 +2,7 @@
 Question Link:- https://leetcode.com/problems/implement-queue-using-stacks/description/
 */
 
+
 class MyQueue {
 private:
     stack<int> inStack; // Stack for enqueue operation
