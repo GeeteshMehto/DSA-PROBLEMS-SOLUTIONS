@@ -2,6 +2,8 @@
 Question Link:- https://www.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1
 */
 
+
+
 vector<long long> printFirstNegativeInteger(long long int A[],
                                              long long int N, long long int K) {
                                                  
