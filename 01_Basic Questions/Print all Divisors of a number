@@ -14,3 +14,4 @@ int* printDivisors(int n, int &size){
     size = count;
     return arr;
 }
+
