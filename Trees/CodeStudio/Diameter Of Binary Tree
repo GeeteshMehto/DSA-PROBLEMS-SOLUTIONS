@@ -1,0 +1,29 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/diameter-of-the-binary-tree_920552
+*/
+
+int diameterFast(TreeNode<int>*root,int cur,int& diameter) {
+	if(root == NULL) 
+        return 0;
+
+    int left = diameterFast(root -> left, cur + 1, diameter) - cur;
+    if(left < 0) 
+        left = 0;
+    
+    int right = diameterFast(root -> right, cur + 1, diameter) - cur;
+    if(right < 0) 
+        right = 0;
+
+    diameter = max((left + right), diameter);
+    
+    int temp = max(left, right);
+    
+    return temp + cur;
+}
+
+
+int diameterOfBinaryTree(TreeNode<int> *root) {
+    int diameter = 0;
+	diameterFast(root, 0, diameter);
+    return diameter;
+}
