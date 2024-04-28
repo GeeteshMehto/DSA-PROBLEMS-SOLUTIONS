@@ -1,0 +1,59 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/zig-zag-traversal_1062662
+*/
+
+#include <bits/stdc++.h> 
+/*************************************************************
+
+    Following is the Binary Tree node structure
+
+    class BinaryTreeNode
+    {
+    public :
+        T data;
+        BinaryTreeNode<T> *left;
+        BinaryTreeNode<T> *right;
+
+        BinaryTreeNode(T data) {
+            this -> data = data;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+*************************************************************/
+
+vector<int> zigZagTraversal(BinaryTreeNode<int> *root)
+{
+    vector<int>result;
+    if (root == NULL)
+        return result;
+    queue <BinaryTreeNode<int>*>q;
+    q.push(root);
+
+    bool leftToRight = true;
+
+    while(!q.empty()) {
+        int size = q.size();
+        vector<int>ans(size);
+
+        for(int i = 0; i < size; i++) {
+            BinaryTreeNode<int>* frontNode = q.front();
+            q.pop();
+
+            // normal insert or reverse insert
+            int index = leftToRight ? i : size - i - 1;
+            ans[index] = frontNode -> data;
+
+            if (frontNode -> left)
+                q.push(frontNode -> left);
+            if (frontNode -> right)
+                q.push(frontNode -> right);
+        }
+        leftToRight = !leftToRight;
+
+        for (auto i = 0; i < ans.size(); i++)
+            result.push_back(ans[i]);
+    }
+    return result;
+}
