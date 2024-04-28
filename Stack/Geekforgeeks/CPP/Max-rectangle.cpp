@@ -2,6 +2,8 @@
 Question Link:- https://www.geeksforgeeks.org/problems/max-rectangle/1
 */
 
+
+
 class Solution{
   public:
   
