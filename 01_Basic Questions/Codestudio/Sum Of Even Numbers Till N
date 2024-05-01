@@ -1,0 +1,13 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/sum-of-even-numbers-till-n_893205
+*/
+
+#include <bits/stdc++.h> 
+long long evenSumTillN(int n) {
+    long long sum = 0;
+    for (int i = 0; i <= n; i++) {
+        if (i % 2 == 0)
+            sum += i;
+    }
+    return sum;
+}
