@@ -1,0 +1,20 @@
+/*
+Question Link :- https://leetcode.com/problems/count-integers-with-even-digit-sum/
+*/
+
+class Solution {
+private:
+  int getDigitSum(int num) {
+    int digitSum = 0;
+    while (num > 0) {
+      digitSum += num % 10;
+      num /= 10;
+    }
+    return digitSum;
+  }
+
+public:
+    int countEven(int num) {
+        return (num - getDigitSum(num) % 2) / 2;
+    }
+};
