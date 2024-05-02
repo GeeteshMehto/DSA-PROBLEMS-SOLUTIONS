@@ -1,0 +1,22 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/maximum-sum-path-of-a-binary-tree_1214968
+*/
+
+
+int solve(BinaryTreeNode<int> *root, int &maxi) {
+    if (root == NULL)
+        return 0;
+    
+    int left = max(0, solve(root -> left, maxi));
+    int right = max(0, solve(root -> right, maxi));
+
+    maxi = max(maxi, root -> data + left + right);
+
+    return root -> data + max(left, right);
+}
+
+int maxPathSum(BinaryTreeNode<int> *root) {
+    int maxi = INT_MIN;
+    solve(root, maxi);
+    return maxi;
+}
