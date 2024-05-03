@@ -1,0 +1,30 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/lca-of-binary-tree_920541
+*/
+
+
+TreeNode<int>* findLCA(TreeNode<int> *root, int x, int y) {
+    if (root == NULL)
+        return NULL;
+        
+    if (root -> data == x || root -> data == y)
+        return root;
+    
+    TreeNode<int> *leftAns = findLCA(root -> left, x, y);
+    TreeNode<int> *rightAns = findLCA(root -> right, x, y);
+
+    if (leftAns != NULL && rightAns != NULL)
+        return root;
+    else if (leftAns != NULL && rightAns == NULL)
+        return leftAns;
+    else if (leftAns == NULL && rightAns != NULL)
+        return rightAns;
+    else
+        return NULL;
+}
+
+int lowestCommonAncestor(TreeNode<int> *root, int x, int y)
+{
+	TreeNode<int> *ancestor = findLCA(root, x, y);
+    return ancestor -> data;
+}
