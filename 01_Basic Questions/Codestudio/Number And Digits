@@ -1,0 +1,29 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/number-and-digits_975269
+*/
+
+
+
+#include <bits/stdc++.h> 
+vector<int> numbersAndDigits(int n) 
+{
+    // constrint is 10^12, if all of them are 9, then sum of digits is 108 which could be max possible
+    int sum = n > 108 ? 108 : n;
+    vector<int> res;
+
+    while(sum) {
+        int num = n-sum;
+        int sum2 = 0, 
+        num2 = num;
+
+        while(num) {
+            sum2 += num%10;
+            num /= 10; 
+        }
+        if (sum == sum2) {
+            res.push_back(num2);
+        }
+        sum--;
+    }
+    return res;
+}
