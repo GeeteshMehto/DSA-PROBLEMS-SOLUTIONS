@@ -1,0 +1,26 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/find-minimum-number-of-coins_975277
+*/
+
+
+
+
+vector<int> MinimumCoins(int n)
+{
+    vector<int>ans;
+    int i = 8;
+    int v[9] = {1, 2, 5, 10, 20, 50, 100, 500, 1000};
+    
+    while(1) {
+        if (v[i] <= n) {
+            ans.push_back(v[i]);
+            n = n - v[i];
+        }
+        else {
+            i--;
+        }
+        if (i < 0)
+            break;
+    }
+    return ans;
+}
