@@ -1,0 +1,21 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/find-power-of-a-number_1115717
+*/
+
+
+
+#include <bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x, n;
+    cin >> x >> n;
+    if (x == 0 && n == 1)
+        cout << 0;    
+    else {
+        long long ans = pow(x, n);
+        cout << ans;
+    }
+    return 0;
+}
