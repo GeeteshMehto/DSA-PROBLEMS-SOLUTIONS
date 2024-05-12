@@ -1,0 +1,39 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/frog-jump_3621012
+*/
+
+
+#include <bits/stdc++.h> 
+
+int frogJump(int n, vector<int> &heights)
+
+{
+
+    int p1=0;
+
+    int p2=0;
+
+    for(int i=1; i<n; i++){
+
+        int j2=INT_MAX;
+
+        int j1=p1+abs(heights[i]-heights[i-1]);
+
+        if(i>1){
+
+            j2=p2+abs(heights[i]-heights[i-2]);
+
+        }
+
+        int curr=min(j1,j2);
+
+        p2=p1;
+
+        p1=curr;
+
+    }
+
+    return p1;
+
+}
+
