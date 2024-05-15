@@ -1,0 +1,16 @@
+/*
+Question Link ;- https://www.naukri.com/code360/problems/power-of-two_893061
+*/
+
+
+
+bool isPowerOfTwo(int n)
+{	
+    int i = abs(n);
+    while(i != 1) {
+        if(i % 2 == 1) 
+            return false;
+        i  /= 2;
+    }
+    return true;
+}
