@@ -7,3 +7,4 @@ where earning.movie_id=imdb.movie_id and metacritic >60 and domestic>100000000
 and imdb.title like'%2012%';
 
 
+
