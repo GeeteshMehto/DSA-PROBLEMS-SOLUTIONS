@@ -14,6 +14,7 @@ class Solution(object):
 
 
 
+
 1. Two Sum
 
 Link:-  https://leetcode.com/problems/two-sum/
