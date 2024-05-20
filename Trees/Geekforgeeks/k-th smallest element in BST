@@ -1,0 +1,33 @@
+/*
+Question Link :- https://www.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/
+*/
+
+
+class Solution {
+  private:
+    int solve(Node* root, int &i, int K) {
+        if (root == NULL)
+            return -1;
+        
+        // Left L
+        int left = solve(root -> left, i, K);
+    
+        if (left != -1)
+            return left;
+        
+        // N
+        i++;
+        if (i == K)
+            return root -> data;
+        
+        // Right R
+        return solve(root -> right, i, K);
+    }
+    
+  public:
+    int KthSmallestElement(Node *root, int K) {
+        int i = 0;
+        int ans = solve(root, i, K);
+        return ans;
+    }
+};
