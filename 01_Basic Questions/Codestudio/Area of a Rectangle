@@ -2,6 +2,7 @@
 Question Link :- https://www.naukri.com/code360/problems/area-of-rectangle_1172156
 */
 
+
 #include <bits/stdc++.h> 
 class Rectangle {
     public:
