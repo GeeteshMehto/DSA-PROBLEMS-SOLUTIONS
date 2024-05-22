@@ -1,0 +1,40 @@
+/*
+Question Link :- https://www.geeksforgeeks.org/problems/flatten-bst-to-sorted-list--111950/
+*/
+
+
+class Solution
+{
+private:
+    void inorder(Node *root, vector<int>&inorderVal) {
+        if (root == NULL)
+            return ;
+        
+        inorder(root -> left, inorderVal);
+        inorderVal.push_back(root -> data);
+        inorder(root -> right, inorderVal);
+    }
+    
+public:
+    Node *flattenBST(Node *root)
+    {
+        vector<int>inorderVal;
+        inorder(root, inorderVal);
+        int n = inorderVal.size();
+    
+        Node *newRoot = new Node(inorderVal[0]);
+        Node *curr = newRoot;
+    
+        for (int i = 1; i < n; i++) {
+            Node *temp = new Node(inorderVal[i]);
+            curr -> left = NULL;
+            curr -> right = temp;
+            curr = temp;
+        }
+    
+        curr -> left = NULL;
+        curr -> right = NULL;
+    
+        return newRoot;
+    }
+};
