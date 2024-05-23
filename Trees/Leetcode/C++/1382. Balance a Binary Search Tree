@@ -1,0 +1,37 @@
+/*
+https://leetcode.com/problems/balance-a-binary-search-tree/
+*/
+
+
+
+class Solution {
+
+private:
+    void inorder(TreeNode* root, vector<int>&inorderVal) {
+        if (root == NULL)
+            return ;
+        
+        inorder(root -> left, inorderVal);
+        inorderVal.push_back(root -> val);
+        inorder(root -> right, inorderVal);
+    }
+    
+    
+    TreeNode* inorderToBst(int s, int e, vector<int>inorderVal) {
+        if (s > e)
+            return NULL;
+        
+        int mid = (s + e) / 2;
+        TreeNode*root = new TreeNode(inorderVal[mid]);
+        root -> left = inorderToBst(s, mid - 1, inorderVal);
+        root -> right = inorderToBst(mid + 1, e, inorderVal);
+        return root;
+    }
+
+public:
+    TreeNode* balanceBST(TreeNode* root) {
+        vector<int>inorderVal;
+        inorder(root, inorderVal);
+        return inorderToBst(0, inorderVal.size() - 1, inorderVal);
+    }
+};
