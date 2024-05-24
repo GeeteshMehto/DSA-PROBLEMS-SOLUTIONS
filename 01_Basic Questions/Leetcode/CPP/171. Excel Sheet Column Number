@@ -2,6 +2,7 @@
 Question Link :- https://leetcode.com/problems/excel-sheet-column-number/
 */
 
+
 class Solution {
 public:
     int titleToNumber(string columnTitle) {
