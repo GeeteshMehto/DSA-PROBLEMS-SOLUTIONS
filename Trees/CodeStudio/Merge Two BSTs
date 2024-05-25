@@ -1,0 +1,64 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/h_920474
+*/
+
+void inorder(TreeNode *root, vector<int>&inorderVal) {
+    if (root == NULL)
+        return ;
+    
+    inorder(root -> left, inorderVal);
+    inorderVal.push_back(root -> data);
+    inorder(root -> right, inorderVal);
+}
+
+vector<int>mergeArrays(vector<int>&bst1, vector<int>&bst2) {
+    vector<int>ans(bst1.size() + bst2.size());
+    int i = 0, j = 0, k = 0;
+
+    while (i < bst1.size() && j < bst2.size()) {
+        if (bst1[i] < bst2[j]) {
+            ans[k++] = bst1[i];
+            i++;
+        }
+        else {
+            ans[k++] = bst2[j];
+            j++;
+        }
+    }
+    while (i < bst1.size()) {
+        ans[k++] = bst1[i];
+        i++;
+    }
+    while (j < bst2.size()) {
+        ans[k++] = bst2[j];
+        j++;
+    }
+    return ans;
+}
+
+
+// Use this only if you need to make BST from inorder
+TreeNode* inorderToBst(int s, int e, vector<int>&inorderVal) {
+    if (s > e)
+        return NULL;
+
+    int mid = (s + e) / 2;
+    TreeNode *root = new TreeNode(inorderVal[mid]);
+    root -> left = inorderToBst(s, mid - 1, inorderVal);
+    root -> left = inorderToBst(mid + 1, e, inorderVal);
+    return root;
+}
+// 
+
+vector<int> mergeBST(TreeNode *root1, TreeNode *root2)
+{
+    vector<int>bst1, bst2;
+    inorder(root1, bst1);
+    inorder(root2, bst2);
+
+    vector<int>mergeArray = mergeArrays(bst1, bst2);
+
+    // int s = 0, e = mergeArray.size() - 1;
+    // return inorderToBst(s, e, mergeArray);
+    return mergeArray;
+}
