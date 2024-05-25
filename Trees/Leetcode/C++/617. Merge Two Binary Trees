@@ -1,0 +1,42 @@
+/*
+Question Link :- https://leetcode.com/problems/merge-two-binary-trees/
+*/
+
+
+class Solution {
+public:
+    TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+        if (root1 == NULL && root2 == NULL) {
+            return NULL;
+        }
+
+        int val = 0;
+        if (root1 != NULL) {
+            val += root1 -> val;
+        }
+        if (root2 != NULL) {
+            val += root2 -> val;
+        }
+
+        TreeNode* root = new TreeNode(val);
+
+        TreeNode* left1 = NULL;
+        TreeNode* left2 = NULL;
+        TreeNode* right1 = NULL;
+        TreeNode* right2 = NULL;
+
+        if (root1 != NULL) {
+            left1 = root1 -> left;
+            right1 = root1 -> right;
+        }
+        if (root2 != NULL) {
+            left2 = root2 -> left;
+            right2 = root2 -> right;
+        }
+
+        root->left = mergeTrees(left1, left2);
+        root->right = mergeTrees(right1, right2);
+
+        return root;
+    }
+};
