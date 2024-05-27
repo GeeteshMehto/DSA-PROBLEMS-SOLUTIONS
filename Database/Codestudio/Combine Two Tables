@@ -1,0 +1,15 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/combine-two-tables_2110759
+*/
+
+
+select a.FirstName, a.LastName, b.City, b.State
+
+from Person a
+
+left Join Address b
+
+on a.PersonId = b.PersonId
+
+;
+
