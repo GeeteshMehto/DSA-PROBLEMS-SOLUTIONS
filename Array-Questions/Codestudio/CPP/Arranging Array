@@ -2,6 +2,7 @@
 Question Link :- https://www.codingninjas.com/studio/problems/arranging-amplifiers_1171045
 */
 
+
 #include <bits/stdc++.h> 
 
 vector<int> arrangeGame(vector<int>&arr) {
