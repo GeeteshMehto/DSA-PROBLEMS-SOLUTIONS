@@ -1,0 +1,9 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/spotify-sessions_2246918
+*/
+
+
+SELECT DISTINCT session_id FROM Playback P
+LEFT JOIN Ads A ON A.customer_id = P.customer_id
+WHERE A.timestamp NOT BETWEEN P.start_time AND P.end_time
+ORDER BY session_id; 
