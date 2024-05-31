@@ -1,0 +1,19 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/base-58_1262310
+*/
+
+#include <bits/stdc++.h> 
+string encodeBase58(int N) 
+{
+	string ans = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+	string res;
+	
+    if(N == 0)
+		return "1";
+    while (N != 0) {
+        int x = N % 58;
+		res = ans[x] + res;
+        N /= 58;
+    }
+    return res;
+}
