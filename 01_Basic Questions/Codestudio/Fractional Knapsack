@@ -1,0 +1,32 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/fractional-knapsack_975286
+*/
+
+
+#include <bits/stdc++.h>
+
+bool compare(pair<int, int> &a, pair<int, int> &b){
+    double r1 = (double)a.second/a.first;
+    double r2 = (double)b.second/b.first;
+    return r1 > r2;
+}
+
+double maximumValue (vector<pair<int, int>>& items, int n, int w)
+{
+    double ans = 0;
+    int currWt = 0;
+    sort(items.begin(), items.end(), compare);
+
+    for(int i=0; i<n; i++){
+        if(currWt + items[i].first <= w){
+            currWt += items[i].first;
+            ans += items[i].second;
+        }
+        else {
+            int remain = w - currWt;
+            currWt += remain;
+            ans += ((double)items[i].second / items[i].first) * remain;
+        }
+    }
+    return ans;
+}
