@@ -1,0 +1,55 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/is-binary-heap-tree_893136
+*/
+
+
+
+int countNodes(BinaryTreeNode<int>* root) {
+    if (root == NULL)
+        return 0;
+    
+    int ans = 1 + countNodes(root -> left) + countNodes(root -> right);
+}
+
+bool isCBT(BinaryTreeNode<int>* root, int index, int totalCount) {
+    if (root == NULL)
+        return true;
+    
+    if (index >= totalCount)
+        return false;
+    else {
+        int left = isCBT(root -> left, (2 * index + 1), totalCount);
+        int right = isCBT(root -> right, (2 * index + 2), totalCount);
+        return (left && right);
+    }
+}
+
+bool isMaxOrder(BinaryTreeNode<int>* root) {
+    if (root == NULL)
+        return true;
+    
+    bool left = isMaxOrder(root -> left);
+    bool right = isMaxOrder(root -> right);
+
+    if (root -> left && root -> data < root -> left -> data)
+        return false;
+
+    if (root -> right && root -> data < root -> right -> data) 
+        return false;
+    
+    if (root -> right && root -> left == NULL) 
+        return false;  // Handle edge case
+
+    return (left && right);
+}
+
+bool isBinaryHeapTree(BinaryTreeNode<int>* root) 
+{
+    int index = 0;
+    int totalCount = countNodes(root);
+    
+    if (isCBT(root, index, totalCount) && isMaxOrder(root))
+        return true;
+    else
+        return false;
+}
