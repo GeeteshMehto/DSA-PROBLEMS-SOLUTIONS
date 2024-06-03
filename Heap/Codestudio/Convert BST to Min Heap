@@ -1,0 +1,32 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/convert-bst-to-min-heap_920498
+*/
+
+
+#include <bits/stdc++.h> 
+
+void preorder(BinaryTreeNode* root, vector<int>&inVal) {
+	if (root == NULL)
+		return ;
+	preorder(root -> left, inVal);
+	inVal.push_back(root -> data);
+	preorder(root -> right, inVal);
+}
+
+void fillPreOrder(BinaryTreeNode* root, vector<int>&inVal, int &index) {
+	if (root == NULL)
+		return ;
+	
+	root -> data = inVal[index++];
+	fillPreOrder(root -> left, inVal, index);
+	fillPreOrder(root -> right, inVal, index);
+}
+
+BinaryTreeNode* convertBST(BinaryTreeNode* root)
+{
+	vector<int>inVal;
+	preorder(root, inVal);
+	int index = 0;
+	fillPreOrder(root, inVal, index);
+	return root;
+}
