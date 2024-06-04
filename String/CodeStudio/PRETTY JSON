@@ -1,0 +1,48 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/pretty-json_1112618
+*/
+
+
+#include <bits/stdc++.h> 
+
+string insert_space(int tab) {
+    string temp = "";
+    for (int i = 0; i < tab; i++)
+        temp += '\t';
+    
+    return temp;
+}
+
+vector<string> prettyJSON(string &str) {
+    //if (str == "" || str = " ") return {};
+    vector<string>ans;
+    string temp = "";
+    int indent = 0;
+
+    for (char ch : str) {
+        if (ch == '[' || ch == '{') {
+          if (temp != "") {
+            ans.push_back(insert_space(indent) + temp);
+          }
+          ans.push_back(insert_space(indent) + ch);
+          indent += 1;
+          temp = "";
+        } else if (ch == '}' || ch == ']') {
+            if (temp != "") {
+                ans.push_back(insert_space(indent) + temp);
+            }
+            indent--;
+            temp = ch;
+        }
+        else if (ch == ',') {
+            temp += ch;
+            ans.push_back(insert_space(indent) + temp);
+            temp = "";
+        }
+        else {
+            temp += ch;
+        }
+    }
+    ans.push_back(temp);
+    return ans;
+}
