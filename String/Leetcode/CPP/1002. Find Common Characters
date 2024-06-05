@@ -1,0 +1,30 @@
+/*
+Question Link :- https://leetcode.com/problems/find-common-characters/
+*/
+
+
+
+class Solution {
+public:
+    vector<string> commonChars(vector<string>& words) {
+        vector<string>ans;
+        vector <int >commonChar(26, INT_MAX);
+
+        for (int i = 0; i < words.size(); i++) {
+            vector<int>count(26, 0);
+            for (int j = 0; j < words[i].size(); j++) {
+                count[words[i][j] - 'a']++;
+            }
+            for (int k = 0; k < 26; k++) {
+                if (count[k] < commonChar[k])
+                    commonChar[k] = count[k];
+            }
+        }
+
+        for (int i = 0; i < 26; i++) {
+            for (int j = 0; j < commonChar[i]; j++)
+                ans.push_back(string(1, 'a' + i));
+        }
+        return ans;
+    }
+}; 
