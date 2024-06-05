@@ -1,0 +1,28 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/rotate-dll_1115782
+*/
+
+
+
+DLLNode* rotateDLL(DLLNode* head, int k) 
+{
+    DLLNode* temp = head;
+
+	for (int i = 1; i < k; i++)
+		temp = temp -> next;
+	
+	temp = temp -> next;
+	temp -> prev -> next = NULL;
+	temp -> prev = NULL;
+
+	DLLNode* end = temp;
+
+	while (end -> next != NULL)
+		end = end -> next;
+	
+	end -> next = head;
+	head -> prev = end;
+	head = temp;
+	return head;
+
+}
