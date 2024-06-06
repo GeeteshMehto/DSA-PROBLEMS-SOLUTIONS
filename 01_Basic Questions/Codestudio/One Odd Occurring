@@ -1,0 +1,13 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/missing-number_4606074
+*/
+
+
+int missingNumber(int n, vector<int> &arr){
+    int ans = 0;
+
+    for (int i = 0; i < n; i++)
+        ans = ans ^ arr[i];
+
+    return ans;
+}
