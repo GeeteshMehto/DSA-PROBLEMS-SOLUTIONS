@@ -1,0 +1,17 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/stocks-are-profitable_893405
+*/
+
+
+#include <bits/stdc++.h> 
+int maximumProfit(vector<int> &prices){
+    int sell = 0;
+    int hold = INT_MIN;
+    int n = prices.size();
+
+    for (int i = 0; i < n; i++) {
+        sell = max(sell, hold + prices[i]);
+        hold = max(hold, -prices[i]);
+    }
+    return sell;
+}
