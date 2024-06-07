@@ -1,0 +1,21 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/absolute-difference-in-an-array_1094906
+*/
+
+
+#include <bits/stdc++.h> 
+pair<int, int> absDiff(vector<int>& arr, int n)
+{
+	int even = 0;
+	int odd = 0;
+
+	for (int i = 0; i < n; i++) {
+		if (i % 2 == 0) {
+			even = abs(even - arr[i]);
+		}
+		else{
+			odd = abs(odd - arr[i]);
+		}
+	}
+	return {even, odd};
+}
