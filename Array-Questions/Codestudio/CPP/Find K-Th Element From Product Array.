@@ -1,0 +1,80 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/find-kth-element-from-product-array_1115786
+*/
+
+
+#include <bits/stdc++.h> 
+
+bool checkPair(vector<int>&positive, vector<int>&negative, int k, int mid) {
+	int pairs = 0;
+	int temp = negative.size() - 1;
+	int negSize = negative.size() - 1;;
+	int posSize = positive.size() - 1;
+
+	for (int i = 0; i < negative.size(); i++) {
+		while (temp >= 0 && (negative[i] * negative[temp] <= mid)) {
+			temp = temp - 1;
+		}
+		pairs = pairs + min(negSize - temp, negSize - i);
+	}
+
+	temp = 0;
+
+	for (int i = positive.size() - 1; i >= 0; i--) {
+		while((temp < positive.size()) && (positive[i] * positive[temp] <= mid)) {
+			temp = temp + 1;
+		}
+		pairs = pairs + min(temp, i);
+	}
+
+	temp = positive.size() - 1;
+
+	for (int i = negative.size() - 1; i >= 0; i--) {
+		while ((temp >= 0) && (negative[i] * positive[temp] <= mid)) {
+			temp = temp - 1;
+		}
+		pairs = pairs + posSize - temp;
+	}
+
+	if (pairs >= k)
+		return true;
+	else 
+		return false;
+}
+int kthSmallest(vector<int> &arr, int k)
+{
+	int n = arr.size();
+
+	if (k > (n*(n-1))/2)
+		return -1;
+	
+	vector<int>positive;
+	vector<int>negative;
+
+	for (int i = 0; i < n; i++) {
+		if (arr[i] >= 0)
+			positive.push_back(arr[i]);
+		else
+			negative.push_back(arr[i]);
+	}
+
+	sort(negative.begin(), negative.end());
+	sort(positive.begin(), positive.end());
+
+	int l = -1 * 1e9;
+	int ans = 0;
+	int r = 1e9;
+
+	while(l <= r) {
+		int mid = (l + r) / 2;
+
+		if (checkPair(positive, negative, k, mid)) {
+			ans = mid;
+			r = mid - 1;
+		}
+		else {
+			l = mid + 1;
+		}
+	}
+	return ans;
+}
