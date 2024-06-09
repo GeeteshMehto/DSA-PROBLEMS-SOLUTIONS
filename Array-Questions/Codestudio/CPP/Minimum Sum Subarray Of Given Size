@@ -1,0 +1,21 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/find-minimum-sum-subarray-of-given-size_873368
+*/
+
+
+
+#include <bits/stdc++.h> 
+int minSubarraySum(int arr[], int n, int k) 
+{
+    int ans = 0;
+    for (int i = 0; i < k; i++) {
+      ans += arr[i];
+    }
+    int mini = ans;
+
+    for ( int i = k; i < n; i++) {
+        ans += arr[i] - arr[i-k];
+        mini = min(mini, ans);
+    }
+    return mini;
+}
