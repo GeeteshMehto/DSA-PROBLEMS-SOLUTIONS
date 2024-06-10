@@ -2,6 +2,7 @@
 Question Link :- https://leetcode.com/problems/summary-ranges/
 */
 
+
 class Solution {
  public:
   vector<string> summaryRanges(vector<int>& nums) {
