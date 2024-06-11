@@ -1,0 +1,15 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/interview-shuriken-41-move-zeroes-to-end_240143
+*/
+
+
+void pushZerosAtEnd(vector<int> &arr) 
+{
+	int nonZero = 0;
+	for ( int i = 0; i < arr.size(); i++) {
+		if ( arr[i] != 0 ) {
+			swap(arr[i], arr[nonZero]);
+			nonZero++;
+		}
+	}
+}
