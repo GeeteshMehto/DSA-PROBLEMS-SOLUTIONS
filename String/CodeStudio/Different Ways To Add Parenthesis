@@ -21,14 +21,14 @@ vector<int> solve(string s)
                     }
                     else if (s[i] == '+') {
                         ans.push_back(l + r);
-                    }
-                    else {
+                    } else {
                         ans.push_back(l - r);
                     }
                 }
             }
         }
-        
+    }
+
     if(ans.size()==0) ans.push_back(stoi(s));
         return ans;
 }
