@@ -1,0 +1,17 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/modular-node_3118998
+*/
+
+
+Node* modularNode(int k, Node* head) {
+    Node* ans = NULL;
+    int i = 1;
+
+    while (head != NULL) {
+        if (i % k == 0)
+            ans = head;
+        head = head -> next;
+        i++;
+    }
+    return ans;
+}
