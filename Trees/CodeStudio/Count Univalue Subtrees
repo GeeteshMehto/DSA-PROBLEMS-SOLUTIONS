@@ -1,0 +1,33 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/unival-trees_697311
+*/
+
+
+bool isUnivalSubtree(BinaryTreeNode<int>* root, int& count) {
+    if (root == NULL) {
+        return true;
+    }
+
+    bool leftUnival = isUnivalSubtree(root->left, count);
+    bool rightUnival = isUnivalSubtree(root->right, count);
+
+    if (leftUnival && rightUnival) {
+        if (root->left != NULL && root->data != root->left->data) {
+            return false;
+        }
+        if (root->right != NULL && root->data != root->right->data) {
+            return false;
+        }
+        count++;
+        return true;
+    }
+    return false;
+}
+
+
+int countUnivalTrees(BinaryTreeNode<int> *root)
+{
+    int count = 0;
+    isUnivalSubtree(root, count);
+    return count;
+}
