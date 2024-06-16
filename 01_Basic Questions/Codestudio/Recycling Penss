@@ -1,0 +1,20 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/recycling-pens_992773
+*/
+
+int recyclePens(int n, int r, int k, int c ){
+ 
+    // Write your code here.
+    int minPens = 0 , maxPens = n;
+    int ans = 0;
+    while(minPens <= maxPens){
+        int currPens = minPens + (maxPens-minPens)/2;
+        long long amountNeeded = currPens * 1LL * c;
+        long long totalAmount = r + (n - currPens) * 1LL * k;
+        if(totalAmount >= amountNeeded) {
+            ans = currPens; 
+            minPens = currPens + 1;}
+        else maxPens = currPens - 1;
+    }
+    return ans;
+}
