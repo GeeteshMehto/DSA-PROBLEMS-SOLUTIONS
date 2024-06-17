@@ -1,0 +1,30 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/partition_1172151
+*/
+
+#include <bits/stdc++.h> 
+
+Node*findPartiton(Node*head, int x)
+{
+	Node* ans = new Node(0);
+    Node* temp = ans;
+    Node* curr = head;
+
+    while(curr != NULL) {
+        if (curr -> data < x) {
+            temp -> next = new Node(curr -> data);
+            temp = temp -> next;
+        }
+        curr = curr -> next;
+    }
+    curr = head;
+
+    while (curr != NULL) {
+        if (curr -> data >= x) {
+            temp -> next = new Node(curr -> data);
+            temp = temp -> next;
+        }
+        curr = curr -> next;
+    }
+    return ans -> next;
+}
