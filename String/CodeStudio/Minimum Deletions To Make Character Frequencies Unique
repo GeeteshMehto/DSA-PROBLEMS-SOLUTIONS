@@ -1,0 +1,24 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/minimum-deletions-to-make-character-frequencies-unique_1461220
+*/
+
+
+int minDeletions(string str) {
+    vector<int>m(26, 0);
+    int count = 0;
+
+    for (int i = 0; i < str.length(); i++) {
+        char s = str[i];
+        m[s - 'a']++;
+    }
+
+    sort(m.rbegin(), m.rend());
+
+    for (int i = 1; i < m.size(); i++) {
+        while(m[i] >= m[i - 1] && m[i] > 0) {
+            count++;
+            m[i]--;
+        }
+    }
+    return count;
+}
