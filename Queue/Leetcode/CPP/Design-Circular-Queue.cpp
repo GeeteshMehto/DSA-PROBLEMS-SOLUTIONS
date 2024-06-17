@@ -2,6 +2,7 @@
 Question Link:- https://leetcode.com/problems/design-circular-queue/description/
 */
 
+
 class MyCircularQueue {
 private:
     vector<int> data;
