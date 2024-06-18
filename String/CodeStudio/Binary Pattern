@@ -1,0 +1,19 @@
+/*
+Question Link :- https://naukri.com/code360/problems/binary-pattern_893335
+*/
+
+
+#include <bits/stdc++.h> 
+void printPatt(int n) {
+  char ch = '1';
+
+  for (int i = n; i >= 1; i--) {
+    string s = string(i, ch);
+    cout << s << endl;
+
+    if (ch == '1')
+      ch = '0';
+    else
+      ch = '1';
+  }
+}
