@@ -1,0 +1,50 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/rose-garden_2248080
+*/
+
+
+
+int isPossible(vector<int>&arr, int day, int k, int m) {
+	int count = 0;
+	int noOfB = 0;
+
+	for (int i = 0; i < arr.size(); i++) {
+		if (arr[i] <= day)
+			count++;
+		else {
+			noOfB += (count / k);
+			count = 0;
+		}
+	}
+	noOfB += (count / k);
+	return noOfB >= m;
+}
+
+int roseGarden(vector<int> arr, int k, int m)
+{
+	long long val = m * 1LL * k * 1LL;
+
+	if (val > arr.size())
+		return -1;
+	
+	int mini = INT_MAX;
+	int maxi = INT_MIN;
+
+	for (int i = 0; i < arr.size(); i++) {
+		mini = min(mini, arr[i]);
+		maxi = max(maxi, arr[i]);
+	}
+
+	int s = mini, e = maxi;
+
+	while (s <= e) {
+		int mid = s + (e - s) / 2;
+
+		if (isPossible(arr, mid, k, m)) {
+			e = mid - 1;
+		}
+		else
+			s = mid + 1;
+	}
+	return s;
+}
