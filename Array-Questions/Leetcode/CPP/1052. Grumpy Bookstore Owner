@@ -1,0 +1,31 @@
+/*
+Question Link :- https://leetcode.com/problems/grumpy-bookstore-owner/?envType=daily-question&envId=2024-06-21
+*/
+
+
+class Solution {
+public:
+    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {
+        int start = 0;
+        int maxi = 0;
+        int sum = 0;
+        int gs = 0;
+
+        for (int end = 0; end < customers.size(); end++) {
+            if (grumpy[end] != 1) {
+                sum += customers[end];
+            }
+            else {
+                while (end - start + 1 > minutes) {
+                    if (grumpy[start] == 1)
+                        gs -= customers[start];
+                    start++;
+                }
+                gs += customers[end];
+                maxi = max(gs, maxi);
+            }
+        }
+        int ans = sum + maxi;
+        return ans;
+    }
+};
