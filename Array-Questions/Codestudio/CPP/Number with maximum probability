@@ -1,0 +1,21 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/number-with-maximum-probability_975323
+*/
+
+
+#include <bits/stdc++.h> 
+int minNumToWin(int n, int mishaNums){
+	int median = (n + 1) / 2;
+    if(n % 2 != 0)
+    {
+        if(mishaNums < median)
+            return mishaNums + 1;
+        else
+            return mishaNums - 1;
+    }
+    else if(n % 2 == 0){
+        if(mishaNums <= median)
+            return mishaNums + 1;
+        return mishaNums - 1;
+    }
+}
