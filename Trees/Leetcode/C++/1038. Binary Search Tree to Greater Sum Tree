@@ -1,0 +1,26 @@
+/*
+Question Link :- https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/
+*/
+
+
+class Solution {
+private:
+    void reversedInorder(TreeNode* root, int &prefix) {
+        if (root == NULL)
+            return ;
+        
+        reversedInorder(root -> right, prefix);
+
+        root -> val += prefix;
+        prefix = root -> val;
+
+        reversedInorder(root -> left, prefix);
+    }
+
+public:
+    TreeNode* bstToGst(TreeNode* root) {
+        int prefix = 0;
+        reversedInorder(root, prefix);
+        return root;
+    }
+};
