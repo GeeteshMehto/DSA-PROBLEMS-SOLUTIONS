@@ -2,6 +2,7 @@
 Question Link :- https://www.naukri.com/code360/problems/print-all-divisors-of-a-number_1164188
 */
 
+
 int* printDivisors(int n, int &size){
     int *arr = new int[n];
     int count = 0;
