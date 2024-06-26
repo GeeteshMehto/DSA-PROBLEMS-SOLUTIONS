@@ -1,0 +1,44 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/break-the-board_1115781
+*/
+
+
+#include <bits/stdc++.h> 
+int minimumCost(vector<int> row, vector<int> column, int l, int w)
+{
+	sort(row.begin(), row.end());
+    sort(column.begin(), column.end());
+
+    int ans = 0;
+    int horizontal = 1;
+    int vertical = 1;
+    int i = l - 2;
+    int j = w - 2;
+
+    while(i >= 0 && j >= 0){ 
+
+       if (row[i] > column[j]) {
+           ans += row[i] * vertical;
+           i--;
+           horizontal++;
+       }
+       else {
+            ans += column[j] * horizontal;
+            j--;
+            vertical++; 
+       }
+    }
+   // loop for horizontal array, if remains
+   while(i >= 0) {
+        ans += row[i] * vertical;
+        i--;
+        horizontal++;
+    }
+    // loop for vertical array, if remains
+    while(j >= 0){
+        ans += column[j] * horizontal;
+        j--;
+        vertical++; 
+   }
+   return ans;  
+}
