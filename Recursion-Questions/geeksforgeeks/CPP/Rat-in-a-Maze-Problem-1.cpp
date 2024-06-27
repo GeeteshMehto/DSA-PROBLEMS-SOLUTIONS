@@ -6,7 +6,8 @@ class Solution{
     bool isSafe(int x, int y, int n, vector<vector<int>> visited, vector<vector<int>>& m) {
     return (x >= 0 && x < n && y >= 0 && y < n && visited[x][y] == 0 && m[x][y] == 1);
 }
-    
+
+
     void solve(vector<vector<int>>& m, int n, vector<string>& ans, int x, int y, vector<vector<int>> visited, string path){
         
         if(x == n-1 && y == n-1){
