@@ -1,0 +1,25 @@
+/*
+Question Link :- https://leetcode.com/problems/maximum-total-importance-of-roads/
+*/
+
+
+class Solution {
+public:
+    long long maximumImportance(int n, vector<vector<int>>& roads) {
+        vector<int> degreeCounts(n, 0);
+
+        for (int i = 0; i < roads.size(); i++){
+            degreeCounts[roads[i][0]]++;
+            degreeCounts[roads[i][1]]++;
+        }
+
+        sort(degreeCounts.begin(), degreeCounts.end());
+
+        long long maxImportance = 0;
+        
+        for (int i = 0; i < n; ++i)
+            maxImportance += static_cast<long long>(i + 1) * degreeCounts[i];
+
+        return maxImportance;
+    }
+};
