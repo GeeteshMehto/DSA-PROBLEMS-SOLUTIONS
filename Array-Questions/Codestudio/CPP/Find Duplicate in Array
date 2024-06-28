@@ -1,0 +1,13 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/find-duplicate-in-array_8289592
+*/
+
+
+
+#include <bits/stdc++.h>
+
+int findDuplicate(vector<int> &arr, int n) {
+	while(arr[0] != arr[arr[0]])
+	    swap(arr[0],arr[arr[0]]);
+	return arr[0];
+}
