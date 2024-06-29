@@ -1,0 +1,25 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/repeating-numbers_893305
+*/
+
+
+#include <bits/stdc++.h> 
+vector < vector < int > > numberPattern(int n) {
+  int start = 1;
+  vector<vector<int>>ans;
+  int flag = 0;
+
+  for (int i = 0; i < n; i++) {
+    vector<int>aux;
+    int limit = 1 << i;
+
+    for (int j = 0; j < limit; j++) {
+      if (start == 10)
+        start = 1;
+      aux.push_back(start++);
+    }
+    aux.push_back(-1);
+    ans.push_back(aux);
+  }
+  return ans;
+}
