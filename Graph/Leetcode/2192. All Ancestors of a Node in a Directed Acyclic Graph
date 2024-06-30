@@ -3,6 +3,7 @@ Question Link :- https://leetcode.com/problems/all-ancestors-of-a-node-in-a-dire
 */
 
 
+
 class Solution {
 private:
     void dfs(const vector<vector<int>>& graph, int u, int ancestor,
