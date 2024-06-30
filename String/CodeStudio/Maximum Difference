@@ -1,0 +1,28 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/maximum-difference_1262275
+*/
+
+
+#include <bits/stdc++.h> 
+string maximumDifference(int n, vector<int>& arr)
+{
+	if (n == 1)
+		return "EVEN";
+	
+	int mini = INT_MAX;
+	int maxi = INT_MIN;
+
+	for (int i = 0; i < n; i++) {
+		if (arr[i] > maxi)
+			maxi = arr[i];
+		if (arr[i] < mini)
+			mini = arr[i];
+	}
+
+	int diff = maxi - mini;
+
+	if ((diff % 2) == 0)
+		return "EVEN";
+	else
+		return "ODD";
+}
