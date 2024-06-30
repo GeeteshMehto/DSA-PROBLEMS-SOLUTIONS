@@ -1,0 +1,17 @@
+/*
+Question Link :- https://www.naukri.com/code360/problems/alternate-print_1081473
+*/
+
+
+#include <bits/stdc++.h> 
+string alternatePrint(string a, string b) {
+    string ans;
+    int n = min(a.length(), b.length());
+
+    for (int i = 0; i < n; i++) {
+        ans += a[i];
+        ans += b[i];
+    }
+
+    return ans + a.substr(n) + b.substr(n);
+}
