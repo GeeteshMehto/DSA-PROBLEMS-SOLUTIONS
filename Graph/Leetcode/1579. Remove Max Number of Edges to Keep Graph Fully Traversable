@@ -1,0 +1,83 @@
+/*
+Question Link :- https://leetcode.com/problems/remove-max-number-of-edges-to-keep-graph-fully-traversable/
+*/
+
+
+class Solution {
+private:
+    bool uni(int a, int b, vector<int>& root) {
+        int rootA = find(a, root);
+        int rootB = find(b, root);
+        if (rootA == rootB) {
+            return false;
+        }
+        root[rootA] = rootB;
+        return true;
+    }
+
+    int find(int a, vector<int>& root) {
+        if (root[a] != a) {
+            root[a] = find(root[a], root);
+        }
+        return root[a];
+    }
+
+public:
+    int maxNumEdgesToRemove(int n, vector<vector<int>>& edges) {
+        vector<int> rootA(n + 1);
+        vector<int> rootB(n + 1);
+        
+        for (int i = 1; i <= n; i++) {
+            rootA[i] = i;
+            rootB[i] = i;
+        }
+
+        int res = 0;
+        int aliceEdges = 0;
+        int bobEdges = 0;
+
+        // Alice and Bob
+        for (int i = 0; i < edges.size(); i++) {
+            if (edges[i][0] == 3) {
+                if (uni(edges[i][1], edges[i][2], rootA)) {
+                    aliceEdges++;
+                    if (uni(edges[i][1], edges[i][2], rootB)) {
+                        bobEdges++;
+                    }
+                } else {
+                    res++;
+                }
+            }
+        }
+
+        vector<int> rootA_copy = rootA;
+
+        // only Alice
+        for (int i = 0; i < edges.size(); i++) {
+            if (edges[i][0] == 1) {
+                if (uni(edges[i][1], edges[i][2], rootA)) {
+                    aliceEdges++;
+                } else {
+                    res++;
+                }
+            }
+        }
+
+        // only Bob
+        rootA = rootA_copy;
+        for (int i = 0; i < edges.size(); i++) {
+            if (edges[i][0] == 2) {
+                if (uni(edges[i][1], edges[i][2], rootB)) {
+                    bobEdges++;
+                } else {
+                    res++;
+                }
+            }
+        }
+
+        if (aliceEdges == bobEdges && aliceEdges == n - 1)
+            return res;
+        else
+            return -1;
+    }
+};
